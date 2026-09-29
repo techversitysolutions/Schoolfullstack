@@ -1,0 +1,33 @@
+{
+  "name": "school-backend",
+  "version": "1.0.0",
+  "description": "School management backend API with CMS and authentication",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "seed": "node scripts/seed.js"
+  },
+  "keywords": [
+    "school",
+    "cms",
+    "express",
+    "mysql",
+    "api"
+  ],
+  "author": "School CMS",
+  "license": "MIT",
+  "dependencies": {
+    "@simplewebauthn/server": "^14.0.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.4.5",
+    "sanitize-html": "^2.17.7"
+  }
+}
