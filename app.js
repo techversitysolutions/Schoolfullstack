@@ -4,7 +4,6 @@ const helmet = require('helmet');
 const os = require('os');
 const path = require('path');
 const config = require('./config/config');
-const { pool } = require('./config/database');
 const { apiLimiter } = require('./middleware/rateLimiters');
 const authRoutes = require('./routes/authRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
@@ -73,15 +72,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'School backend is running', data: { status: 'ok' } });
-});
-
-app.get('/api/ready', async (req, res) => {
-  try {
-    await pool.query('SELECT 1');
-    res.json({ success: true, message: 'School backend is ready', data: { status: 'ready' } });
-  } catch (error) {
-    res.status(503).json({ success: false, message: 'Database is unavailable', data: { status: 'not_ready' } });
-  }
 });
 
 app.use('/api/auth', authRoutes);
